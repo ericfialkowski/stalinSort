@@ -1,11 +1,13 @@
 package stalinSort
 
-func Sort(s []int) []int {
+import "cmp"
+
+func Sort[V cmp.Ordered](s []V) []V {
 	l := len(s)
 	if l == 0 {
-		return []int{}
+		return []V{}
 	}
-	r := make([]int, l)
+	r := make([]V, l)
 	r[0] = s[0]
 	si := 1
 	ri := 0
