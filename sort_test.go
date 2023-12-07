@@ -24,6 +24,25 @@ func TestSortInts(t *testing.T) {
 	}
 }
 
+func TestSortDescInts(t *testing.T) {
+	tests := []struct {
+		name string
+		args []int
+		want []int
+	}{
+		{name: "empty", args: []int{}, want: []int{}},
+		{name: "simple", args: []int{2, 4, 1}, want: []int{2, 1}},
+		{name: "negs", args: []int{1, -2, 1}, want: []int{1, -2}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := SortDesc(tt.args); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Sort() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestSortFloats(t *testing.T) {
 	tests := []struct {
 		name string
